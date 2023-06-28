@@ -7,7 +7,11 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
     [SerializeField]
-    private float _speed = 5;
+    private float _speed = 100;
+    private bool _isGrounded = true;
+    [SerializeField]
+    private float _jumpForce = 100;
+    private float move;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +25,14 @@ public class Player : MonoBehaviour
     }
     void Movement()
     {
-        float HorizontalInput = Input.GetAxisRaw("Horizontal");
-
-        _rigidbody.velocity = (new Vector2(HorizontalInput, _rigidbody.velocity.y)) * _speed * Time.fixedDeltaTime;
+        move = Input.GetAxisRaw("Horizontal");
+        if (Input.GetAxis("Jump") > 0)
+        {
+            if (_isGrounded)
+            {
+                _rigidbody.AddForce(transform.up * -_jumpForce);
+            }
+        }
+        _rigidbody.velocity = new Vector2 (move,_rigidbody.velocity.y);
     }
 }
