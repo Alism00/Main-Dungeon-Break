@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MossGiant : Enemy
+public class Skeleton : Enemy
 {
     //start method or initilzation
     public override void Init()
@@ -10,4 +10,3 @@ public class MossGiant : Enemy
         base.Init();
     }
 }
-

@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Spider : Enemy
 {
-
-
-    public override void Attack()
+  //start method or initilzation
+    public override void Init()
     {
-        base.Attack();
-    }
-
-    public override void Update()
-    {
-        throw new System.NotImplementedException();
+        base.Init();
     }
 }
