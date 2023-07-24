@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 namespace Game.Player
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour,IDamageable
     {
         private Rigidbody2D _rigidbody;
         [SerializeField]
@@ -19,9 +19,13 @@ namespace Game.Player
         [SerializeField]
         private bool _resetJumpNeeded = false;
         private PlayerAnimation _playerAnimation;
+        public int CollctedDiamond;
+        public int Health { get ; set ; }
+
         // Start is called before the first frame update
         void Start()
         {
+            Health = 5;
             _rigidbody = GetComponent<Rigidbody2D>();
             _playerAnimation = GetComponent<PlayerAnimation>();
         }
@@ -79,7 +83,23 @@ namespace Game.Player
             if (Input.GetMouseButtonDown(0) && IsGrounded())
             {
                 _playerAnimation.NormalAttack();
+                StartCoroutine(AttackResetRoutine());
             }
+        }
+
+        public void Damage()
+        {
+            Debug.Log("playhit");
+            Health--;
+            _playerAnimation.GetHit();
+            if (Health < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        IEnumerator AttackResetRoutine()
+        {
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

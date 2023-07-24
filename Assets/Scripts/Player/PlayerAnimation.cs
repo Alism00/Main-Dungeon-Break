@@ -51,5 +51,9 @@ namespace Game.Player
                 
             }
         }
+        public void GetHit()
+        {
+            _playerAnim.SetTrigger("GetHit");
+        }
     }
 }
