@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     {
         PlayerGemCountText.text = gemcount.ToString()+"G";
     }
-    public void CloseShop() { }
+    
     public void UpdateShopSelection(Button button)
     {
 
