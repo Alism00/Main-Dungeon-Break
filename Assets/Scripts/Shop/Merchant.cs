@@ -35,7 +35,6 @@ public class Merchant : MonoBehaviour
     }
     public void SelectItem(Button button)
     {
-
-        Debug.Log(button.ToString());
+        UIManager.Instance.UpdateShopSelection(button);
     }
 }
