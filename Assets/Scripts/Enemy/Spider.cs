@@ -49,7 +49,7 @@ public class Spider : Enemy, IDamageable
     private void AttackTime()
     {
         distance = Vector3.Distance(player.transform.localPosition, transform.localPosition);
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (distance >= 4f)
         {
             isHit = false;
