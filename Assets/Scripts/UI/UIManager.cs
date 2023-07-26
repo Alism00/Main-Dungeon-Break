@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     public Text PlayerGemCountText;
     public Image SelectionImage;
 
-    public void OpenShop(int gemcount)
+    public void UpdateShop(int gemcount)
     {
         PlayerGemCountText.text = gemcount.ToString()+"G";
     }
