@@ -1,13 +1,17 @@
 using Game.Player;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Merchant : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _HUD;
     Button SelectedButton;
     private Player player;
     [SerializeField]
@@ -25,6 +29,7 @@ public class Merchant : MonoBehaviour
             if (player != null)
             {
                 _ShopPanel.SetActive(true);
+                _HUD.SetActive(false);
             }
             UIManager.Instance.UpdateShop(player.CollctedDiamond);
         }
@@ -44,6 +49,7 @@ public class Merchant : MonoBehaviour
     public void CloseShop()
     {
         _ShopPanel.SetActive(false);
+        _HUD.SetActive(true) ;
     }
     public void BuyItem()
     {
@@ -54,7 +60,9 @@ public class Merchant : MonoBehaviour
             {
                 player.CollctedDiamond -= items.Price;
                 Debug.Log($"{items.Name} has bought.");
+                BuyRule(items.Name);
                 DisableButton();
+                UIManager.Instance.GemCounter.text = player.CollctedDiamond.ToString();
                 UIManager.Instance.UpdateShop(player.CollctedDiamond);
             }
             else
@@ -65,6 +73,19 @@ public class Merchant : MonoBehaviour
 
 
     }
+
+    private void BuyRule(string name)
+    {
+        switch (name)
+        {
+            case "Key":
+                GameManager.Instance.KeyCount++;
+                break;
+            default:
+                break;
+        }
+    }
+
     private void DisableButton()
     {
         SelectedButton.interactable = false;
@@ -74,5 +95,6 @@ public class Merchant : MonoBehaviour
         textname.color = Color.gray;
         SelectedButton = null;
         UIManager.Instance.SelectionImage.gameObject.SetActive(false);
+        
     }
 }
