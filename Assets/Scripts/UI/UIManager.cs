@@ -17,11 +17,14 @@ public class UIManager : MonoBehaviour
             return _instance;
         }
     }
+    
     public Text PlayerGemCountText;
     public Image SelectionImage;
-
+    public Text GemCounter;
+    public Image[] images;
     public void UpdateShop(int gemcount)
     {
+
         PlayerGemCountText.text = gemcount.ToString()+"G";
     }
     
@@ -37,5 +40,22 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+    }
+    public void HealthBarUpdate(int lives,int maxlives)
+    {
+
+       
+        for (int i = 0; i < images.Length; i++)
+        {
+
+            if (i < lives)
+            {
+                images[i].enabled = true;
+            }
+            else
+            {
+                images[i].enabled = false;
+            }
+        }
     }
 }

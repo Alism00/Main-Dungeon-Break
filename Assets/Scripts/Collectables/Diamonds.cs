@@ -16,6 +16,7 @@ public class Diamonds : MonoBehaviour
         if(other.tag==("Player"))
         {
             _player.CollctedDiamond += DiamondValue;
+            UIManager.Instance.GemCounter.text = _player.CollctedDiamond.ToString();
             Destroy(gameObject);
         }
     }
