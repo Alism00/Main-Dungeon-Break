@@ -16,6 +16,7 @@ namespace Game.Player
         private float move;
         //[SerializeField]
         //private int _jumplevel = 0;
+        private int _maxLives;
         [SerializeField]
         private bool _resetJumpNeeded = false;
         private PlayerAnimation _playerAnimation;
@@ -49,7 +50,7 @@ namespace Game.Player
                 StartCoroutine(ResetJumpNeededRoutine());
                 
             }
-            // Movment   
+            // Movmen
             _rigidbody.velocity = new Vector2(move * _speed, _rigidbody.velocity.y);
             _playerAnimation.Move(move);
         }
@@ -92,9 +93,11 @@ namespace Game.Player
             Debug.Log("playhit");
             Health--;
             _playerAnimation.GetHit();
-            if (Health < 0)
+            UIManager.Instance.HealthBarUpdate(Health,_maxLives);
+            if (Health <= 0)
             {
-                Destroy(gameObject);
+                _playerAnimation.Death();
+                Destroy(gameObject,1f);
             }
         }
         IEnumerator AttackResetRoutine()

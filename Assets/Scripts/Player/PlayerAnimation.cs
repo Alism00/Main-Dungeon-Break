@@ -55,5 +55,9 @@ namespace Game.Player
         {
             _playerAnim.SetTrigger("GetHit");
         }
+        public void Death()
+        {
+            _playerAnim.SetTrigger("Death");
+        }
     }
 }
