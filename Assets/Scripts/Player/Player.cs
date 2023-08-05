@@ -93,7 +93,7 @@ namespace Game.Player
         public void Damage(int power)
         {
             Debug.Log("playhit");
-            Health -= power;
+            Health = Health - power;
             _playerAnimation.GetHit();
             UIManager.Instance.HealthBarUpdate(Health,_maxLives);
             if (Health <= 0)

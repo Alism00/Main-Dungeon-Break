@@ -12,12 +12,12 @@ public class Attack : MonoBehaviour
     {
         //Debug.Log(other.name);
         IDamageable hit = other.GetComponent<IDamageable>();
-        if (this.gameObject.tag == "Enemy")
+        if (this.gameObject.transform.root.tag == "Enemy")
         {
             Enemy enemy = gameObject.transform.root.GetComponent<Enemy>();
             Power = enemy.Power;
         }
-        else if (this.gameObject.tag == "Player")
+        else if (this.gameObject.transform.root.tag == "Player")
         {
             Player player = gameObject.transform.root.GetComponent<Player>();
             Power = player.Power;
