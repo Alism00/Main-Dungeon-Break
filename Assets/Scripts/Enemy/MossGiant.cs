@@ -6,10 +6,10 @@ public class MossGiant : Enemy,IDamageable
 {
     public int Health { get ; set ; }
 
-    public void Damage()
+    public void Damage(int power)
     {
         if (isDead) return;
-        Health--;
+        Health -= power;
         anim.SetTrigger("Hit");
         anim.SetBool("InCombat", true);
         isHit = true;
@@ -27,6 +27,7 @@ public class MossGiant : Enemy,IDamageable
     public override void Init()
     {
         base.Init();
+        Power = 2;
         Health = health;
     }
 }

@@ -1,10 +1,12 @@
 using Game.Player;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public int Power;
     [SerializeField]
     protected int health;
     [SerializeField]
@@ -52,11 +54,11 @@ public abstract class Enemy : MonoBehaviour
     {
         if (targetPosition == PointA.position)
         {
-            sprite.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         else
         {
-            sprite.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
         }
         if (transform.position == PointA.position)
         {
@@ -83,11 +85,11 @@ public abstract class Enemy : MonoBehaviour
         Vector3 direction = player.transform.localPosition - transform.localPosition;
         if(direction.x >= 0 && anim.GetBool("InCombat"))
         {
-            sprite.flipX = false;
+            transform.localScale = new Vector3 (1,1,1);
         }
         if(direction.x <0&& anim.GetBool("InCombat"))
         {
-            sprite.flipX=true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
     }

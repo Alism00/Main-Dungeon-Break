@@ -6,6 +6,7 @@ namespace Game.Player
 {
     public class Player : MonoBehaviour,IDamageable
     {
+        public int Power;
         private Rigidbody2D _rigidbody;
         [SerializeField]
         private float _speed = 5;
@@ -26,6 +27,7 @@ namespace Game.Player
         // Start is called before the first frame update
         void Start()
         {
+            Power = 3;
             Health = 5;
             _rigidbody = GetComponent<Rigidbody2D>();
             _playerAnimation = GetComponent<PlayerAnimation>();
@@ -81,17 +83,17 @@ namespace Game.Player
         }
         void NormalAttack()
         {
-            if (Input.GetMouseButtonDown(0) && IsGrounded())
+            if (Input.GetMouseButtonDown(0))
             {
                 _playerAnimation.NormalAttack();
                 StartCoroutine(AttackResetRoutine());
             }
         }
 
-        public void Damage()
+        public void Damage(int power)
         {
             Debug.Log("playhit");
-            Health--;
+            Health -= power;
             _playerAnimation.GetHit();
             UIManager.Instance.HealthBarUpdate(Health,_maxLives);
             if (Health <= 0)
@@ -99,6 +101,10 @@ namespace Game.Player
                 _playerAnimation.Death();
                 Destroy(gameObject,1f);
             }
+        }
+        public void FireSword()
+        {
+            _playerAnimation.SetFireSword();
         }
         IEnumerator AttackResetRoutine()
         {

@@ -15,12 +15,13 @@ public class Spider : Enemy, IDamageable
     {
 
         base.Init();
+        Power = 1;
         Health = health;
     }
-    public void Damage()
+    public void Damage(int power)
     {
         if (isDead) return;
-        Health--;
+        Health -= power;
         anim.SetBool("InCombat", true);
         isHit = true;
         if (Health <= 0)

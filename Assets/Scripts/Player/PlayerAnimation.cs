@@ -40,13 +40,14 @@ namespace Game.Player
         {
             if (num > 0)
             {
-                _playerRenderer.flipX = false;
+                transform.localScale = new Vector3 (1,1,1);
+                
                 _swrodArcRenderer.flipX=false;
                 
             }
             else if (num < 0)
             {
-                _playerRenderer.flipX = true;
+                transform.localScale = new Vector3(-1, 1, 1) ;
                 _swrodArcRenderer.flipX = true;
                 
             }
@@ -58,6 +59,10 @@ namespace Game.Player
         public void Death()
         {
             _playerAnim.SetTrigger("Death");
+        }
+        public void SetFireSword()
+        {
+            _playerAnim.SetBool("FireSword",true);
         }
     }
 }

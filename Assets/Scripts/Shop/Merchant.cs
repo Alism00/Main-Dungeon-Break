@@ -39,6 +39,7 @@ public class Merchant : MonoBehaviour
         if (other.tag == "Player")
         {
             _ShopPanel.SetActive(false);
+            _HUD.SetActive(true);
         }
     }
     public void SelectItem(Button button)
@@ -49,7 +50,7 @@ public class Merchant : MonoBehaviour
     public void CloseShop()
     {
         _ShopPanel.SetActive(false);
-        _HUD.SetActive(true) ;
+        _HUD.SetActive(true);
     }
     public void BuyItem()
     {
@@ -81,6 +82,12 @@ public class Merchant : MonoBehaviour
             case "Key":
                 GameManager.Instance.KeyCount++;
                 break;
+            case "Flame Sword":
+                GameManager.Instance.FireSword(); 
+                break;
+            case "Flight Boots":
+                GameManager.Instance.FlightBoots = true; 
+                break;
             default:
                 break;
         }
@@ -95,6 +102,6 @@ public class Merchant : MonoBehaviour
         textname.color = Color.gray;
         SelectedButton = null;
         UIManager.Instance.SelectionImage.gameObject.SetActive(false);
-        
+
     }
 }

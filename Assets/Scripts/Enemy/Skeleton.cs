@@ -11,13 +11,15 @@ public class Skeleton : Enemy,IDamageable
     //start method or initilzation
     public override void Init()
     {
+
         base.Init();
+        Power = 1;
         Health = health;
     }
-    public void Damage()
+    public void Damage(int power)
     {
         if (isDead) return;
-        Health--;
+        Health -= power;
         anim.SetTrigger("Hit");
         anim.SetBool("InCombat", true);
         isHit = true;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AcidEffect : MonoBehaviour
 {
-   
+
     private void Start()
     {
         Destroy(gameObject, 5f);
@@ -24,7 +24,7 @@ public class AcidEffect : MonoBehaviour
             if (Hit != null)
             {
                 
-                Hit.Damage();
+                Hit.Damage(1);
                 Destroy(gameObject);
 
             }
