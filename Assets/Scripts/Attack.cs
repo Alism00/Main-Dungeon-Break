@@ -14,6 +14,7 @@ public class Attack : MonoBehaviour
         IDamageable hit = other.GetComponent<IDamageable>();
         if (this.gameObject.transform.root.tag == "Enemy")
         {
+             
             Enemy enemy = gameObject.transform.root.GetComponent<Enemy>();
             Power = enemy.Power;
         }

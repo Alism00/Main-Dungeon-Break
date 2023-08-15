@@ -18,7 +18,15 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
-    public int KeyCount { get; set; }
+    private int KeyCount { get; set; }
+    public void KeyCounter()
+    {
+        if (KeyCount <=5) 
+        {
+            KeyCount++;
+            UIManager.Instance.KeyBarUpdate(KeyCount);
+        }
+    }
     public void FireSword()
     {
         player.FireSword();

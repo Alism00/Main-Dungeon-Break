@@ -80,7 +80,7 @@ public class Merchant : MonoBehaviour
         switch (name)
         {
             case "Key":
-                GameManager.Instance.KeyCount++;
+                GameManager.Instance.KeyCounter();
                 break;
             case "Flame Sword":
                 GameManager.Instance.FireSword(); 

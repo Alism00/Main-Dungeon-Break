@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class UIManager : MonoBehaviour
     public Text PlayerGemCountText;
     public Image SelectionImage;
     public Text GemCounter;
-    public Image[] images;
+    public Image[] HealthImages;
+    public Image[] KeyImages;
     public void UpdateShop(int gemcount)
     {
 
@@ -45,16 +47,31 @@ public class UIManager : MonoBehaviour
     {
 
        
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < HealthImages.Length; i++)
         {
 
             if (i < lives)
             {
-                images[i].enabled = true;
+                HealthImages[i].enabled = true;
             }
             else
             {
-                images[i].enabled = false;
+                HealthImages[i].enabled = false;
+            }
+        }
+    }
+    public void KeyBarUpdate(int count)
+    {
+        for (int i = 0; i < KeyImages.Length; i++)
+        {
+
+            if (i < count)
+            {
+                KeyImages[i].enabled = true;
+            }
+            else
+            {
+                KeyImages[i].enabled = false;
             }
         }
     }
